@@ -3,6 +3,28 @@
 
 #8ku
 #7kyu
+def size_to_number(size):
+    #Clothes size number converter
+    #x can only be used on S and L
+    #S,M,L cannot me repeated strings
+    #s = 36, m = 38, l = 40, every x is +-2
+    if size and str(size[-1]).upper() not in {"S","M","L"}:
+        return None
+    
+    if str(size).upper() == "M":
+        return 38
+    
+    size_extra = str(size).upper().count("X") * 2
+
+    if str(size).upper().replace("X","") == "S":
+        return 36-size_extra
+    elif str(size).upper().replace("X","") == "L":
+        return 40+size_extra
+    
+
+
+
+
 #6kyu
 def beggars(values, n):
     #English beggars
@@ -37,4 +59,5 @@ def beggars(values, n):
 
 if __name__ == "__main__":
     #stuff
-    beggars([1,2,3,4,5],1)
+    #beggars([1,2,3,4,5],1)
+    print(size_to_number("xl"))
