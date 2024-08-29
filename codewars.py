@@ -2,14 +2,16 @@
 #formatting rules - 2 new lines between everything 4 new lines between kyu
 #comment the name of the problem below the function / at the start of the solution
 
-#8ku
+#8kyu
 
 
 
 
 #7kyu
+
+
+#Clothes size number converter
 def size_to_number(size):
-    #Clothes size number converter
     #x can only be used on S and L
     #S,M,L cannot me repeated strings
     #s = 36, m = 38, l = 40, every x is +-2
@@ -30,8 +32,11 @@ def size_to_number(size):
 
 
 #6kyu
+
+
+#English beggars
 def beggars(values, n):
-    #English beggars
+    
     if n == 0:
         return []
     print(f"Values: {values} - n: {n}")
@@ -55,8 +60,8 @@ def beggars(values, n):
     return beggar_sum
 
 
+#Parse bank account number
 def parse_bank_account(bank_account):
-    #Parse bank account number
     list_of_nums = ['  ', ' _', ' _', '  ', ' _', ' _', ' _', ' _', ' _', '  |', ' _|', ' _|', '|_|', '|_ ', '|_ ', '  |', '|_|', '|_|', '  |', '|_ ', ' _|', '  |', ' _|', '|_|', '  |', '|_|', ' _|']
     #formula is 0 +28 + 28
     row_one = []
@@ -112,6 +117,25 @@ def check_nested(array, lowest_level):
     return sorted(lowest_level)
 
 
+#Number of Letters of Numbers
+def numbers_of_letters(n):
+    return numbers_of_letters_data(n, [])
+    
+def numbers_of_letters_data(n, path):
+    numbers_letters = ["zero","one","two","three","four","five","six","seven","eight","nine"]
+    letters = ""
+    for num in str(n):
+        letters = letters + numbers_letters[int(num)]
+    
+    path.append(letters)
+    if n == len(letters):
+        return path
+    
+    letter_value = len(letters)
+    
+    return numbers_of_letters_data(letter_value, path)
+
+
 #5kyu
 
 #A Chain adding function
@@ -131,9 +155,14 @@ def add(n):
 if __name__ == "__main__":
     #stuff
     #beggars([1,2,3,4,5],1)
+
     #print(size_to_number("xl"))
+
     # print(parse_bank_account(   ' _  _     _  _     _  _  _  _  _ \n'
     #                             '|_ |_   || ||_   | _||_ |_| _||_|\n'
     #                             '|_| _|  ||_||_|  ||_  _| _||_ |_|\n'))
-    print(near_flatten([[1,2,3],[[4,5],[[6],[7,8]]]]))
+
+    #print(near_flatten([[1,2,3],[[4,5],[[6],[7,8]]]]))
     #print(check_nested([[[1],[2,3]],[4,5]],[]))
+
+    print(numbers_of_letters(1))
