@@ -51,14 +51,7 @@ def beggars(values, n):
     return beggar_sum
 
 def parse_bank_account(bank_account):
-    #example input
-    # text":              '    _  _     _  _  _  _  _ \n'+
-    #                     '  | _| _||_||_ |_   ||_||_|\n'+
-    #                     '  ||_  _|  | _||_|  ||_| _|\n'
-
-    #maybe break down to try and get the nunbers individually first
-    #all numbers are 3 chars
-    #lets try to get the numbers individually first
+    #Parse bank account number
     list_of_nums = ['  ', ' _', ' _', '  ', ' _', ' _', ' _', ' _', ' _', '  |', ' _|', ' _|', '|_|', '|_ ', '|_ ', '  |', '|_|', '|_|', '  |', '|_ ', ' _|', '  |', ' _|', '|_|', '  |', '|_|', ' _|']
     #formula is 0 +28 + 28
     row_one = []
@@ -96,6 +89,16 @@ def parse_bank_account(bank_account):
     print(bank_account_number)
     return int(''.join(bank_account_number))
 #5kyu
+
+
+#A Chain adding function
+class CustomIntFunc(int):
+    def __call__(self, a):
+        return CustomIntFunc(self + a)
+def add(n):
+    #refer to https://stackoverflow.com/questions/39038358/function-chaining-in-python
+    
+    return CustomIntFunc(n)
 #4kyu
 #3kyu
 #2kyu
@@ -106,7 +109,7 @@ if __name__ == "__main__":
     #stuff
     #beggars([1,2,3,4,5],1)
     #print(size_to_number("xl"))
-    print(parse_bank_account(   ' _  _     _  _     _  _  _  _  _ \n'
-                                '|_ |_   || ||_   | _||_ |_| _||_|\n'
-                                '|_| _|  ||_||_|  ||_  _| _||_ |_|\n'))
+    # print(parse_bank_account(   ' _  _     _  _     _  _  _  _  _ \n'
+    #                             '|_ |_   || ||_   | _||_ |_| _||_|\n'
+    #                             '|_| _|  ||_||_|  ||_  _| _||_ |_|\n'))
 
