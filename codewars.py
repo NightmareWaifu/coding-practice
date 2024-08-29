@@ -1,7 +1,12 @@
 #because they didn't have go :/
- 
+#formatting rules - 2 new lines between everything 4 new lines between kyu
+#comment the name of the problem below the function / at the start of the solution
 
 #8ku
+
+
+
+
 #7kyu
 def size_to_number(size):
     #Clothes size number converter
@@ -21,7 +26,6 @@ def size_to_number(size):
     elif str(size).upper().replace("X","") == "L":
         return 40+size_extra
     
-
 
 
 
@@ -49,6 +53,7 @@ def beggars(values, n):
     #return an array length n-1 (take home of each beggar 1 to n)
     print(beggar_sum)
     return beggar_sum
+
 
 def parse_bank_account(bank_account):
     #Parse bank account number
@@ -88,8 +93,26 @@ def parse_bank_account(bank_account):
     
     print(bank_account_number)
     return int(''.join(bank_account_number))
-#5kyu
 
+
+#Nearly flatten a messy array
+def near_flatten(nested):
+    
+    return check_nested(nested,[])
+
+def check_nested(array, lowest_level):
+    #where lowest_level contains all of the lowest-level arrays
+    for item in array:
+        if type(item) == list:
+            check_nested(item, lowest_level)
+        else:
+            lowest_level.append(array)
+            break
+
+    return sorted(lowest_level)
+
+
+#5kyu
 
 #A Chain adding function
 class CustomIntFunc(int):
@@ -112,4 +135,5 @@ if __name__ == "__main__":
     # print(parse_bank_account(   ' _  _     _  _     _  _  _  _  _ \n'
     #                             '|_ |_   || ||_   | _||_ |_| _||_|\n'
     #                             '|_| _|  ||_||_|  ||_  _| _||_ |_|\n'))
-
+    print(near_flatten([[1,2,3],[[4,5],[[6],[7,8]]]]))
+    #print(check_nested([[[1],[2,3]],[4,5]],[]))
