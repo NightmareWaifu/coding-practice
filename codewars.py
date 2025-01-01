@@ -28,9 +28,30 @@ def size_to_number(size):
     elif str(size).upper().replace("X","") == "L":
         return 40+size_extra
     
+#Building a wall with bricks
+def calculate_bricks_count(width, height):
+    print(width,height)
+    #lowest row large bricks only
+    #brick height all 5cm, width always multiple of 60
 
+    #second row - right brick (middle) left brick (small)
+    #third row - opposite of second row
+    #fourth row - large only, then repeat
+    large_brick_size, medium_brick_size, small_brick_size = 60, 40, 20
+    large_bricks, medium_bricks, small_bricks = 0, 0, 0
+    number_of_rows = int(height/5) 
 
+    series_end = number_of_rows%3 
 
+    large_bricks = (number_of_rows)//3 * (width/large_brick_size + 2*(width-medium_brick_size-small_brick_size)/large_brick_size) + (series_end * (width-medium_brick_size-small_brick_size)/large_brick_size)
+
+    print("SERIES",series_end)
+
+    print(number_of_rows)
+    print(f"{int(large_bricks)}L{int(medium_bricks)}M{int(small_bricks)}S")
+
+    return f"{int(large_bricks)}L{int(medium_bricks)}M{int(small_bricks)}S"
+    #continue, gave up cause fuck this shit
 #6kyu
 
 
@@ -165,4 +186,5 @@ if __name__ == "__main__":
     #print(near_flatten([[1,2,3],[[4,5],[[6],[7,8]]]]))
     #print(check_nested([[[1],[2,3]],[4,5]],[]))
 
-    print(numbers_of_letters(1))
+    #print(numbers_of_letters(1))
+    calculate_bricks_count(180, 45)
