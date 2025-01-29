@@ -2,6 +2,7 @@
 #formatting rules - 2 new lines between everything 4 new lines between kyu
 #comment the name of the problem below the function / at the start of the solution
 
+import re
 #8kyu
 
 
@@ -168,6 +169,39 @@ def add(n):
     
     return CustomIntFunc(n)
 #4kyu
+
+#Most frequently used words in a text
+def top_3_words(text):
+    all_words = text.split(" ")
+    print("All words:", all_words)
+    stripped_words = [word.strip() for word in all_words]
+    cleaned_words = [re.sub(r"[^a-zA-Z0-9\s']", '', word) for word in stripped_words]
+    word_count = {}
+    for word in cleaned_words:
+        if word == "" or re.fullmatch(r"'+", word): #weird edge case that I don't understand yet
+            continue
+        if word.lower() not in word_count:
+            word_count[word.lower()] = 1
+        else:
+            word_count[word.lower()] += 1
+    sorted_word_count = dict(sorted(word_count.items(), key=lambda word: word[1], reverse=True))
+
+    counter = 0 #back to the good ol' days
+    top_three = []
+    for value in sorted_word_count:
+        
+        if counter == 3:
+            break
+        counter += 1
+        print(value)
+        top_three.append(value)
+    #top_three = [list(sorted_word_count.keys())[0], list(sorted_word_count.keys())[1], list(sorted_word_count.keys())[2]]
+    print("Word Count:",sorted_word_count)
+    print(top_three)
+
+    return top_three
+    #i give up there are a lot of edge cases and i don't fully understand the problem so maybe in the future i can solve this more elegantly
+
 #3kyu
 #2kyu
 #1kyu
@@ -187,4 +221,5 @@ if __name__ == "__main__":
     #print(check_nested([[[1],[2,3]],[4,5]],[]))
 
     #print(numbers_of_letters(1))
-    calculate_bricks_count(180, 45)
+    #calculate_bricks_count(180, 45) #gave up on this
+    top_3_words("  //wont won't won't ")
